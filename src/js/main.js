@@ -40,7 +40,7 @@ function initBurgerMenu() {
   if (!burger || !navWrap) return;
 
   function isDesktop() {
-    return window.innerWidth >= 768;
+    return window.innerWidth >= 1024; // lg в Tailwind — бургер скрыт с 1024px
   }
 
   function closeMenu() {
@@ -72,7 +72,29 @@ function initBurgerMenu() {
   });
 }
 
+/**
+ * Прелоадер: показывается при загрузке, скрывается после DOMContentLoaded
+ * с минимальной задержкой, чтобы был виден даже при быстром интернете.
+ */
+function initPreloader() {
+  const preloader = document.getElementById('preloader');
+  if (!preloader) return;
+
+  const MIN_DISPLAY_MS = 400;
+  const FADE_OUT_MS = 300;
+
+  const start = Date.now();
+  const elapsed = () => Date.now() - start;
+  const delay = Math.max(0, MIN_DISPLAY_MS - elapsed());
+
+  setTimeout(() => {
+    preloader.classList.add('preloader--hidden');
+    setTimeout(() => preloader.remove(), FADE_OUT_MS);
+  }, delay);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();
   document.querySelectorAll('input[type="tel"], input[name="phone"]').forEach(applyPhoneMask);
   initBurgerMenu();
 });
