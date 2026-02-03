@@ -1,3 +1,13 @@
+<%
+  var preloader = require('./components/preloader.html').default
+  var logoHeader = require('./components/logo-header.html').default
+  var logoFooter = require('./components/logo-footer.html').default
+  var burger = require('./components/burger.html').default
+  var navLinksHeader = require('./components/nav-links-header.html').default
+  var navLinksFooter = require('./components/nav-links-footer.html').default
+  var header = _.template(require('./includes/header.html').default)({ logo: logoHeader, burger: burger, navLinks: navLinksHeader })
+  var footer = _.template(require('./includes/footer.html').default)({ logo: logoFooter, navLinks: navLinksFooter })
+%>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -21,8 +31,8 @@
 </head>
 <body class="font-sans antialiased text-gray-900 bg-[#EAEAEA] min-h-screen flex flex-col">
 
-  <include src="partials/preloader.html"></include>
-  <include src="partials/header.html"></include>
+  <%= preloader %>
+  <%= header %>
 
   <main class="pt-20 sm:pt-24 pb-10 sm:pb-16 md:pb-24 flex flex-1 flex-col items-center justify-center px-4">
     <section class="error-404 text-center max-w-xl mx-auto">
@@ -41,7 +51,7 @@
     </section>
   </main>
 
-  <include src="partials/footer.html"></include>
+  <%= footer %>
 
 </body>
 </html>

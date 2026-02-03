@@ -1,0 +1,13 @@
+<!-- Header -->
+<header class="header fixed top-0 left-0 right-0 z-50 bg-[#EAEAEA] py-3 px-4 lg:py-4 lg:px-8">
+  <div class="header__inner container mx-auto flex flex-row items-center justify-between gap-4 lg:relative">
+    <%= logo %>
+    <div class="header__right flex flex-row items-center gap-2 lg:gap-4">
+      <%= burger %>
+      <div class="header__nav-wrap absolute top-full left-0 right-0 lg:top-1/2 lg:left-1/2 lg:right-auto lg:-translate-x-1/2 lg:-translate-y-1/2 bg-[#EAEAEA] lg:bg-transparent shadow-lg lg:shadow-none overflow-hidden lg:overflow-visible max-h-0 lg:max-h-none transition-all duration-300 ease-in-out" id="header-nav">
+        <%= navLinks %>
+      </div>
+      <a href="tel:+79880000000" class="header__phone hidden lg:inline-flex font-medium text-[#202020] hover:text-[#2E65CA] text-base lg:text-xl flex-shrink-0">+7 (988) 000 00 00</a>
+    </div>
+  </div>
+</header>

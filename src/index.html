@@ -1,3 +1,30 @@
+<%
+  var preloader = require('./components/preloader.html').default
+  var checkIcon = require('./components/check-icon.html').default
+  var logoHeader = require('./components/logo-header.html').default
+  var logoFooter = require('./components/logo-footer.html').default
+  var burger = require('./components/burger.html').default
+  var navLinksHeader = require('./components/nav-links-header.html').default
+  var navLinksFooter = require('./components/nav-links-footer.html').default
+  var header = _.template(require('./includes/header.html').default)({ logo: logoHeader, burger: burger, navLinks: navLinksHeader })
+  var footer = _.template(require('./includes/footer.html').default)({ logo: logoFooter, navLinks: navLinksFooter })
+  var title = require('./components/title.html').default
+  var subtitle = require('./components/subtitle.html').default
+  var heroBtnPrimary = require('./components/hero-btn-primary.html').default
+  var heroBtnSecondary = require('./components/hero-btn-secondary.html').default
+  var providedRow = require('./components/provided-row.html').default
+  var providedRow2 = require('./components/provided-row-2.html').default
+  var specialistCard = _.template(require('./components/specialist-card.html').default)
+  var specialistCard1 = specialistCard({ checkIcon: checkIcon, title: 'Оператор<br>БПЛА', age: 'до 35 лет' })
+  var specialistCard2 = specialistCard({ checkIcon: checkIcon, title: 'Технический<br>специалист', age: 'до 45 лет' })
+  var specialistCard3 = specialistCard({ checkIcon: checkIcon, title: 'Индивидуальный<br>подход ко всем', age: 'до 55 лет' })
+  var rewardBlock = require('./components/reward-block.html').default
+  var rewardBlock2 = require('./components/reward-block-2.html').default
+  var picture = require('./components/picture.html').default
+  var applicationForm = _.template(require('./components/application-form.html').default)
+  var rewardForm = applicationForm({ variant: 'reward' })
+  var applicationFormSection = applicationForm({ variant: 'application' })
+%>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -25,8 +52,8 @@
 </head>
 <body class="font-sans antialiased text-gray-900 bg-[#EAEAEA] min-h-screen">
 
-  <include src="partials/preloader.html"></include>
-  <include src="partials/header.html"></include>
+  <%= preloader %>
+  <%= header %>
 
   <main>
     <!-- Hero -->
@@ -36,17 +63,11 @@
       <div class="hero__overlay absolute inset-0 bg-black/50"></div>
       <div class="hero__content relative z-10 container mx-auto px-4 md:px-8 flex flex-col flex-1 md:flex-initial min-h-0 md:min-h-auto text-center md:text-left">
         <div class="hero__title-wrap flex-1 md:flex-initial flex items-center md:block justify-start">
-          <h1 class="hero__title text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white max-w-3xl mx-0 mb-0 md:mb-6 lg:mb-8 uppercase md:normal-case">
-            Набор в&nbsp;подразделение «Рубикон» по&nbsp;контракту
-          </h1>
+          <%= title %>
         </div>
         <div class="hero__cta flex flex-col gap-3 sm:gap-4 max-w-md mx-auto md:mx-0 md:max-w-[572px] md:w-1/3 md:min-w-0 md:items-stretch">
-          <a href="#reward" class="hero__btn hero__btn--primary inline-flex items-center justify-center w-full px-6 py-3 sm:py-4 md:py-4 text-2xl md:text-xl lg:text-2xl xl:text-4xl bg-red-600 hover:bg-red-700 text-white font-normal rounded-lg text-center transition-colors">
-            Заработная плата от&nbsp;210&nbsp;000&nbsp;₽
-          </a>
-          <a href="#reward" class="hero__btn hero__btn--secondary inline-flex items-center justify-center w-full px-6 py-3 sm:py-4 md:py-4 text-2xl md:text-xl lg:text-2xl xl:text-4xl bg-black/30 backdrop-blur-md border-2 border-white text-white font-normal rounded-lg text-center hover:bg-black/40 transition-colors">
-            Единовременная выплата 2&nbsp;400&nbsp;000&nbsp;₽
-          </a>
+<%= heroBtnPrimary %>
+            <%= heroBtnSecondary %>
         </div>
       </div>
     </section>
@@ -56,14 +77,8 @@
       <div class="provided__inner w-fit max-w-full mx-auto px-4 md:px-6 lg:px-8 flex flex-col sm:flex-row gap-4 sm:gap-6">
         <div class="provided__bar w-full sm:w-[30px] h-1 sm:h-auto sm:min-h-[80px] flex-shrink-0 bg-[#2E65CA] rounded sm:rounded-none"></div>
         <div class="provided__content space-y-6 sm:space-y-12 flex-shrink-0">
-          <div class="flex flex-wrap items-baseline gap-2">
-            <p class="provided__label text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold italic text-gray-900 uppercase tracking-wide">Предоставляется:</p>
-            <p class="provided__text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-900">обучение и&nbsp;проживание</p>
-          </div>
-          <div class="flex flex-wrap items-baseline gap-2">
-            <p class="provided__label text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold italic text-gray-900 uppercase tracking-wide">Место службы:</p>
-            <p class="provided__text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-900">подразделение «Рубикон»</p>
-          </div>
+          <%= providedRow %>
+          <%= providedRow2 %>
         </div>
       </div>
     </section>
@@ -71,31 +86,11 @@
     <!-- Требуемые специалисты -->
     <section id="specialists" class="specialists py-10 sm:py-16 md:py-20 lg:py-24 bg-[#EAEAEA] mb-8 sm:mb-12 md:mb-16 lg:mb-[100px]">
       <div class="specialists__inner container mx-auto px-4 md:px-8">
-        <h2 class="specialists__title text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-gray-900 uppercase text-left mb-8 sm:mb-12">
-          Требуемые специалисты
-        </h2>
+        <%= subtitle %>
         <div class="specialists__grid grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-          <article class="specialists__card bg-white rounded-xl shadow-lg p-5 sm:p-6 md:p-8 text-center border border-gray-100">
-            <div class="specialists__icon w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 rounded-full bg-[#2E65CA] flex items-center justify-center">
-              <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            </div>
-            <h3 class="specialists__card-title font-bold text-gray-900 text-xl sm:text-2xl md:text-lg lg:text-3xl">Оператор<br>БПЛА</h3>
-            <p class="specialists__card-age text-lg sm:text-xl md:text-xl lg:text-2xl text-gray-500 mt-2">до&nbsp;35&nbsp;лет</p>
-          </article>
-          <article class="specialists__card bg-white rounded-xl shadow-lg p-5 sm:p-6 md:p-8 text-center border border-gray-100">
-            <div class="specialists__icon w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 rounded-full bg-[#2E65CA] flex items-center justify-center">
-              <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            </div>
-            <h3 class="specialists__card-title font-bold text-gray-900 text-xl sm:text-2xl md:text-lg lg:text-3xl">Технический<br>специалист</h3>
-            <p class="specialists__card-age text-lg sm:text-xl md:text-xl lg:text-2xl text-gray-500 mt-2">до&nbsp;45&nbsp;лет</p>
-          </article>
-          <article class="specialists__card bg-white rounded-xl shadow-lg p-5 sm:p-6 md:p-8 text-center border border-gray-100">
-            <div class="specialists__icon w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 rounded-full bg-[#2E65CA] flex items-center justify-center">
-              <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            </div>
-            <h3 class="specialists__card-title font-bold text-gray-900 text-xl sm:text-2xl md:text-lg lg:text-3xl">Индивидуальный<br>подход ко&nbsp;всем</h3>
-            <p class="specialists__card-age text-lg sm:text-xl md:text-xl lg:text-2xl text-gray-500 mt-2">до&nbsp;55&nbsp;лет</p>
-          </article>
+          <%= specialistCard1 %>
+          <%= specialistCard2 %>
+          <%= specialistCard3 %>
         </div>
       </div>
     </section>
@@ -136,50 +131,19 @@
         <h2 class="reward__title text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold uppercase text-left mb-6 sm:mb-10">
           <span class="text-[#2E65CA]">Финансовое</span> <span class="text-gray-900">вознаграждение</span>
         </h2>
-        <!-- Карточки выплат + слоган -->
         <div class="reward__inner-container p-4 sm:p-5 md:p-[20px] bg-white rounded-xl sm:rounded-2xl">
           <div class="reward__top grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
-            <div class="reward__block reward__block--one-time relative rounded-lg sm:rounded-xl overflow-hidden min-h-[180px] sm:min-h-[220px] flex flex-col justify-between p-4 sm:p-6" style="background-image: url('img/bg-finance.png'); background-size: cover; background-position: center;">
-              <div class="reward__block-overlay absolute inset-0 bg-[#202020]/60"></div>
-              <span class="reward__badge absolute top-3 left-3 sm:top-4 sm:left-4 px-2 py-1 sm:px-3 sm:py-1.5 bg-[#2E65CA] text-white text-xs sm:text-sm md:text-sm lg:text-lg font-bold rounded-full">Места ограничены</span>
-              <div class="reward__block-content relative z-10 text-white mt-8 sm:mt-10">
-                <p class="reward__block-label text-base sm:text-lg md:text-xl lg:text-2xl opacity-90">Единовременная выплаты (Размер выплат от&nbsp;должности и&nbsp;условий)</p>
-              </div>
-              <div class="reward__block-btn relative z-10 mt-3 sm:mt-4">
-                <span class="inline-block px-4 py-2 sm:px-6 sm:py-3 bg-[#E05445] text-white text-lg sm:text-xl font-bold rounded-lg">2.400.000&nbsp;₽</span>
-              </div>
-            </div>
-            <div class="reward__block reward__block--monthly relative rounded-lg sm:rounded-xl overflow-hidden min-h-[180px] sm:min-h-[220px] flex flex-col justify-between p-4 sm:p-6" style="background-image: url('img/bg-finance.png'); background-size: cover; background-position: center;">
-              <div class="reward__block-overlay absolute inset-0 bg-[#202020]/60"></div>
-              <span class="reward__badge absolute top-3 left-3 sm:top-4 sm:left-4 px-2 py-1 sm:px-3 sm:py-1.5 bg-[#2E65CA] text-white text-xs sm:text-sm md:text-sm lg:text-lg font-bold rounded-full">Места ограничены</span>
-              <div class="reward__block-content relative z-10 text-white mt-8 sm:mt-10">
-                <p class="reward__block-label text-base sm:text-lg md:text-xl lg:text-2xl opacity-90">Ежемесячная выплата (Размер выплат от&nbsp;должности и&nbsp;условий)</p>
-              </div>
-              <div class="reward__block-btn relative z-10 mt-3 sm:mt-4">
-                <span class="inline-block px-4 py-2 sm:px-6 sm:py-3 bg-[#E05445] text-white text-lg sm:text-xl font-bold rounded-lg">от&nbsp;210.000&nbsp;₽</span>
-              </div>
-            </div>
+            <%= rewardBlock %>
+            <%= rewardBlock2 %>
             <p class="reward__slogan hidden md:flex text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-gray-900 items-center justify-center w-full pt-2 sm:pt-4">Za Родину!</p>
           </div>
-          <!-- Льготы + форма (тёмный блок) -->
           <div class="reward__form-section grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-16 items-stretch md:items-center bg-[#202020] rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12">
             <h3 class="reward__form-title text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight order-1 md:order-1">
               Льготы и&nbsp;государственные гарантии военнослужащим
             </h3>
-            <form class="reward__form space-y-3 sm:space-y-4 order-1 md:order-2" action="#" method="post">
-              <input type="text" name="name" placeholder="ФИО полностью" class="reward__input w-full px-4 py-3 text-base sm:text-lg md:text-xl lg:text-2xl bg-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none" required>
-              <input type="tel" name="phone" placeholder="+7 (000) 000-00-00" class="reward__input w-full px-4 py-3 text-base sm:text-lg md:text-xl lg:text-2xl bg-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none" required>
-              <label class="reward__checkbox-label flex items-start gap-3 cursor-pointer">
-                <input type="checkbox" name="privacy" class="reward__checkbox mt-1 w-4 h-4 rounded border-gray-500 bg-white/10 text-red-500 focus:ring-[#2E65CA]" required>
-                <span class="reward__checkbox-text text-sm sm:text-base md:text-base lg:text-lg text-white/90">Нажимая, на&nbsp;кнопку «Отправить заявку», я&nbsp;соглашаюсь с&nbsp;<a href="privacy.html" class="text-white underline hover:no-underline">политикой конфиденциальности</a></span>
-              </label>
-              <button type="submit" class="reward__submit w-full py-3 sm:py-4 text-base sm:text-lg md:text-xl lg:text-2xl bg-[#E05445] hover:bg-[#c94a3d] text-white font-normal rounded-lg transition-colors">
-                Отправить заявку
-              </button>
-            </form>
+            <%= rewardForm %>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -198,7 +162,7 @@
             </div>
           </div>
           <div class="additional__image flex justify-center md:justify-end min-h-0 order-1 md:order-2">
-            <img src="img/more-info-image.png" alt="Подразделение Рубикон" class="additional__img w-full max-w-[537px] h-auto min-h-[200px] object-cover object-top rounded-xl shadow-lg" width="537" height="443">
+            <%= picture %>
           </div>
         </div>
       </div>
@@ -211,23 +175,13 @@
           <h2 class="application__title text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-[#202020] uppercase text-left order-1 md:order-1">
             Оставьте заявку
           </h2>
-          <form class="application__form space-y-3 sm:space-y-4 order-1 md:order-2" action="#" method="post">
-            <input type="text" name="name" placeholder="ФИО полностью" class="application__input w-full px-4 py-3 text-base sm:text-lg md:text-xl lg:text-2xl bg-[#202020]/20 border border-transparent rounded-lg text-[#202020] placeholder-[#202020]/50 focus:outline-none focus:ring-1 focus:ring-[#202020]/40 focus:border-[#202020]/50" required>
-            <input type="tel" name="phone" placeholder="+7 (000) 000-00-00" class="application__input w-full px-4 py-3 text-base sm:text-lg md:text-xl lg:text-2xl bg-[#202020]/20 border border-transparent rounded-lg text-[#202020] placeholder-[#202020]/50 focus:outline-none focus:ring-1 focus:ring-[#202020]/40 focus:border-[#202020]/50" required>
-            <label class="application__checkbox-label flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" name="privacy" class="application__checkbox mt-1 w-4 h-4 rounded border-2 border-[#D64438] bg-white text-[#D64438]" required>
-              <span class="application__checkbox-text text-sm sm:text-base md:text-base lg:text-lg text-[#202020]">Нажимая, на&nbsp;кнопку «Отправить заявку», я&nbsp;соглашаюсь с&nbsp;<a href="privacy.html" class="text-[#2E65CA] underline hover:no-underline">политикой конфиденциальности</a></span>
-            </label>
-            <button type="submit" class="application__submit w-full py-3 sm:py-4 text-base sm:text-lg md:text-xl lg:text-2xl bg-[#D64438] hover:bg-[#c23d30] text-white font-normal rounded-lg transition-colors">
-              Отправить заявку
-            </button>
-          </form>
+          <%= applicationFormSection %>
         </div>
       </div>
     </section>
   </main>
 
-  <include src="partials/footer.html"></include>
+  <%= footer %>
 
 </body>
 </html>

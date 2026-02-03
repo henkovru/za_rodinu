@@ -1,0 +1,25 @@
+<% if (variant === 'reward') { %>
+<form class="reward__form space-y-3 sm:space-y-4 order-1 md:order-2" action="#" method="post">
+  <input type="text" name="name" placeholder="ФИО полностью" class="reward__input w-full px-4 py-3 text-base sm:text-lg md:text-xl lg:text-2xl bg-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none" required>
+  <input type="tel" name="phone" placeholder="+7 (000) 000-00-00" class="reward__input w-full px-4 py-3 text-base sm:text-lg md:text-xl lg:text-2xl bg-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none" required>
+  <label class="reward__checkbox-label flex items-start gap-3 cursor-pointer">
+    <input type="checkbox" name="privacy" class="reward__checkbox mt-1 w-4 h-4 rounded border-gray-500 bg-white/10 text-red-500 focus:ring-[#2E65CA]" required>
+    <span class="reward__checkbox-text text-sm sm:text-base md:text-base lg:text-lg text-white/90">Нажимая, на&nbsp;кнопку «Отправить заявку», я&nbsp;соглашаюсь с&nbsp;<a href="privacy.html" class="text-white underline hover:no-underline">политикой конфиденциальности</a></span>
+  </label>
+  <button type="submit" class="reward__submit w-full py-3 sm:py-4 text-base sm:text-lg md:text-xl lg:text-2xl bg-[#E05445] hover:bg-[#c94a3d] text-white font-normal rounded-lg transition-colors">
+    Отправить заявку
+  </button>
+</form>
+<% } else { %>
+<form class="application__form space-y-3 sm:space-y-4 order-1 md:order-2" action="#" method="post">
+  <input type="text" name="name" placeholder="ФИО полностью" class="application__input w-full px-4 py-3 text-base sm:text-lg md:text-xl lg:text-2xl bg-[#202020]/20 border border-transparent rounded-lg text-[#202020] placeholder-[#202020]/50 focus:outline-none focus:ring-1 focus:ring-[#202020]/40 focus:border-[#202020]/50" required>
+  <input type="tel" name="phone" placeholder="+7 (000) 000-00-00" class="application__input w-full px-4 py-3 text-base sm:text-lg md:text-xl lg:text-2xl bg-[#202020]/20 border border-transparent rounded-lg text-[#202020] placeholder-[#202020]/50 focus:outline-none focus:ring-1 focus:ring-[#202020]/40 focus:border-[#202020]/50" required>
+  <label class="application__checkbox-label flex items-start gap-3 cursor-pointer">
+    <input type="checkbox" name="privacy" class="application__checkbox mt-1 w-4 h-4 rounded border-2 border-[#D64438] bg-white text-[#D64438]" required>
+    <span class="application__checkbox-text text-sm sm:text-base md:text-base lg:text-lg text-[#202020]">Нажимая, на&nbsp;кнопку «Отправить заявку», я&nbsp;соглашаюсь с&nbsp;<a href="privacy.html" class="text-[#2E65CA] underline hover:no-underline">политикой конфиденциальности</a></span>
+  </label>
+  <button type="submit" class="application__submit w-full py-3 sm:py-4 text-base sm:text-lg md:text-xl lg:text-2xl bg-[#D64438] hover:bg-[#c23d30] text-white font-normal rounded-lg transition-colors">
+    Отправить заявку
+  </button>
+</form>
+<% } %>
