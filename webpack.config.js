@@ -12,7 +12,7 @@ module.exports = (env, argv) => {
   entry: './src/js/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].[contenthash:8].js',
+    filename: 'js/[name].js',
     assetModuleFilename: 'img/[name][ext]',
     clean: true,
   },
