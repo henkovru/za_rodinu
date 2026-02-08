@@ -1,11 +1,26 @@
 <!-- Footer -->
-<footer class="footer py-24 sm:py-8 px-4 sm:px-6 lg:px-8 bg-[#202020]">
-  <div class="footer__inner container mx-auto flex flex-col sm:flex-row justify-between items-center gap-16 sm:gap-3 lg:gap-6">
-    <div class="footer__left text-center sm:text-left flex flex-col sm:flex-row sm:items-center gap-16 sm:gap-3 lg:gap-4 order-1 sm:order-none">
-      <%= logo %>
-      <a href="tel:+79880000000" class="footer__phone hidden sm:block text-white/90 text-xs lg:text-sm mt-0">+7 (988) 000 00 00</a>
+<footer class="footer py-12 sm:py-10 md:py-12 px-4 sm:px-6 lg:px-8 bg-[#202020]">
+  <div class="footer__inner container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-10 sm:gap-8">
+      <!-- Логотип и телефон (слева на ПК) -->
+      <div class="footer__col footer__col--brand flex flex-col items-center lg:items-start gap-4 order-1">
+        <%= logo %>
+        <a href="tel:+79880000000" class="footer__phone text-white/90 hover:text-white text-xl sm:text-base lg:text-sm">+7 (988) 000 00 00</a>
+      </div>
+      <!-- Меню и данные о ЮЛ рядом (на ПК — два столбца рядом) -->
+      <div class="flex flex-col lg:flex-row lg:gap-10 gap-8 order-2">
+        <div class="footer__col footer__col--menu flex flex-col items-center lg:items-start gap-3 sm:gap-2 lg:gap-3">
+          <%= navLinks %>
+        </div>
+        <div class="footer__col footer__col--legal text-center lg:text-left order-2 lg:max-w-sm">
+          <p class="footer__legal-title text-white font-bold text-sm sm:text-base uppercase mb-2 sm:mb-3">Данные о&nbsp;ЮЛ</p>
+          <div class="footer__legal-text text-white/80 text-xs sm:text-sm leading-relaxed space-y-1">
+            <p>ИП Роньшин Михаил Юрьевич</p>
+            <p>ИНН: 781697857456</p>
+            <p>ОГРНИП: 324784700238440</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <%= navLinks %>
-    <a href="tel:+79880000000" class="footer__phone text-white/90 hover:text-white text-2xl sm:hidden order-3">+7 (988) 000 00 00</a>
   </div>
 </footer>

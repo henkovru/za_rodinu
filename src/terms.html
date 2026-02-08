@@ -1,0 +1,84 @@
+<%
+  var preloader = require('./components/preloader.html').default
+  var logoHeader = require('./components/logo-header.html').default
+  var logoFooter = require('./components/logo-footer.html').default
+  var burger = require('./components/burger.html').default
+  var navLinksHeader = require('./components/nav-links-header.html').default
+  var navLinksFooter = require('./components/nav-links-footer.html').default
+  var header = _.template(require('./includes/header.html').default)({ logo: logoHeader, burger: burger, navLinks: navLinksHeader })
+  var footer = _.template(require('./includes/footer.html').default)({ logo: logoFooter, navLinks: navLinksFooter })
+%>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Пользовательское соглашение — Za Родину!</title>
+  <meta name="description" content="Пользовательское соглашение сайта Za Родину!: условия использования сайта, права и обязанности пользователей.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/terms.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Пользовательское соглашение — Za Родину!">
+  <meta property="og:description" content="Условия использования сайта Za Родину!.">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Za Родину!">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Пользовательское соглашение — Za Родину!">
+  <meta name="twitter:description" content="Условия использования сайта.">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans antialiased text-gray-900 bg-[#EAEAEA] min-h-screen flex flex-col">
+
+  <%= preloader %>
+  <%= header %>
+
+  <main class="pt-20 sm:pt-24 pb-10 sm:pb-16 md:pb-24 flex-1">
+    <div class="container mx-auto px-4 md:px-8">
+      <h1 class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-[#202020] mb-5 sm:mb-8">
+        Пользовательское соглашение
+      </h1>
+
+      <div class="text-base md:text-lg text-[#202020]/90 leading-relaxed space-y-4">
+        <p>Редакция от 01.12.2025 г.</p>
+
+        <h2 class="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold text-[#202020] mt-6 mb-2 uppercase">1. Общие положения</h2>
+        <p>1.1. Настоящее Пользовательское соглашение (далее – «Соглашение») регулирует отношения между индивидуальным предпринимателем Роньшиным Михаилом Юрьевичем (далее – «Администрация», «Оператор») и пользователем сайта (далее – «Пользователь») в связи с использованием сайта и его сервисов.</p>
+        <p>1.2. Использование сайта означает безоговорочное принятие Пользователем всех условий настоящего Соглашения. В случае несогласия с условиями Пользователь обязан прекратить использование сайта.</p>
+        <p>1.3. Администрация вправе в любое время изменять Соглашение. Новая редакция вступает в силу с момента размещения на сайте, если иное не указано в редакции.</p>
+
+        <h2 class="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold text-[#202020] mt-6 mb-2 uppercase">2. Предмет соглашения</h2>
+        <p>2.1. Администрация предоставляет Пользователю доступ к информационным материалам сайта и сервисам (в том числе формам обратной связи) на условиях настоящего Соглашения.</p>
+        <p>2.2. Сайт предназначен для информирования о деятельности, условиях набора и подачи заявок. Обработка персональных данных осуществляется в соответствии с <a href="privacy.html" class="text-[#2E65CA] underline hover:no-underline">Политикой конфиденциальности</a>.</p>
+
+        <h2 class="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold text-[#202020] mt-6 mb-2 uppercase">3. Права и обязанности сторон</h2>
+        <p>3.1. Пользователь обязуется: не использовать сайт в противоправных целях; не нарушать работу сайта и не пытаться получить несанкционированный доступ к данным; указывать достоверные данные в формах.</p>
+        <p>3.2. Администрация обязуется: обеспечивать работоспособность сайта в пределах своих возможностей; обрабатывать персональные данные в соответствии с Политикой конфиденциальности.</p>
+        <p>3.3. Администрация вправе ограничить или прекратить доступ Пользователя к сайту при нарушении Соглашения или требований законодательства.</p>
+
+        <h2 class="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold text-[#202020] mt-6 mb-2 uppercase">4. Ограничение ответственности</h2>
+        <p>4.1. Сайт и материалы предоставляются «как есть». Администрация не гарантирует бесперебойную работу сайта и не несёт ответственности за косвенные убытки, связанные с использованием или невозможностью использования сайта.</p>
+        <p>4.2. Ссылки на сторонние сайты не означают одобрения их содержания. Администрация не несёт ответственности за содержание внешних ресурсов.</p>
+
+        <h2 class="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold text-[#202020] mt-6 mb-2 uppercase">5. Заключительные положения</h2>
+        <p>5.1. К Соглашению и отношениям между Пользователем и Администрацией применяется право Российской Федерации.</p>
+        <p>5.2. По вопросам, связанным с Соглашением и использованием сайта, можно обращаться по адресу: <strong>г. Санкт-Петербург, вн.тер.г. Муниципальный круг Купчино</strong> или по e-mail: <a href="mailto:ronsnin325546@rambler.ru" class="text-[#2E65CA] underline hover:no-underline">ronsnin325546@rambler.ru</a>.</p>
+
+        <h2 class="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold text-[#202020] mt-6 mb-2 uppercase">Реквизиты оператора</h2>
+        <p class="font-semibold">ИП Роньшин Михаил Юрьевич</p>
+        <p>Юридический/почтовый адрес: г. Санкт-Петербург, вн.тер.г. Муниципальный круг Купчино</p>
+        <p>ОГРНИП: 324784700238440, ИНН: 781697857456</p>
+        <p>E-mail: <a href="mailto:ronsnin325546@rambler.ru" class="text-[#2E65CA] underline hover:no-underline">ronsnin325546@rambler.ru</a></p>
+      </div>
+
+      <p class="mt-8"><a href="index.html" class="text-[#2E65CA] underline hover:no-underline">На главную</a></p>
+    </div>
+  </main>
+
+  <%= footer %>
+
+</body>
+</html>

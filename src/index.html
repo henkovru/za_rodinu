@@ -12,6 +12,7 @@
   var subtitle = require('./components/subtitle.html').default
   var heroBtnPrimary = require('./components/hero-btn-primary.html').default
   var heroBtnSecondary = require('./components/hero-btn-secondary.html').default
+  var heroInfoItem = require('./components/hero-info-item.html').default
   var providedRow = require('./components/provided-row.html').default
   var providedRow2 = require('./components/provided-row-2.html').default
   var specialistCard = _.template(require('./components/specialist-card.html').default)
@@ -61,13 +62,16 @@
       <div class="hero__background hero__background--mb absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden" style="background-image: url('img/bg-hero-mb.png');"></div>
       <div class="hero__background hero__background--pc absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block" style="background-image: url('img/bg-hero-pc.png');"></div>
       <div class="hero__overlay absolute inset-0 bg-black/50"></div>
-      <div class="hero__content relative z-10 container mx-auto px-4 md:px-8 flex flex-col flex-1 md:flex-initial min-h-0 md:min-h-auto text-center md:text-left">
+      <div class="hero__content relative z-10 container mx-auto px-4 md:px-8 flex flex-col flex-1 md:flex-initial min-h-0 md:min-h-auto text-left md:text-left">
         <div class="hero__title-wrap flex-1 md:flex-initial flex items-center md:block justify-start">
           <%= title %>
         </div>
         <div class="hero__cta flex flex-col gap-3 sm:gap-4 max-w-md mx-auto md:mx-0 md:max-w-[572px] md:w-1/3 md:min-w-0 md:items-stretch">
-<%= heroBtnPrimary %>
+            <%= heroBtnPrimary %>
             <%= heroBtnSecondary %>
+        </div>
+        <div class="hero_info font-light mt-8 max-w-5xl text-white text-xs sm:text-base md:text-lg lg:text-lg leading-relaxed italic">
+          <%= heroInfoItem %>
         </div>
       </div>
     </section>
@@ -80,6 +84,17 @@
           <%= providedRow %>
           <%= providedRow2 %>
         </div>
+      </div>
+    </section>
+
+    <!-- Преимущества: карточки из JSON (script#advantages-data). Инфоблоки Битрикс — каждая карточка: title, text, iconUrl (путь к картинке). -->
+    <section class="advantages py-10 sm:py-16 md:py-20 lg:py-24 bg-[#EAEAEA] mb-8 sm:mb-12 md:mb-16 lg:mb-[100px]">
+      <div class="advantages__inner container mx-auto px-4 md:px-8">
+        <h2 class="advantages__title text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold uppercase text-left text-gray-900 mb-6 sm:mb-10">
+          <span class="text-[#2E65CA]">Наши</span> преимущества
+        </h2>
+        <script type="application/json" id="advantages-data">[{"iconUrl":"img/favicon.ico","title":"Денежное довольствие","text":"Стабильная заработная плата от 210 000 ₽ в месяц в зависимости от должности и звания."},{"iconUrl":"img/favicon.ico","title":"Единовременная выплата","text":"Выплата до 2 400 000 ₽ при заключении контракта на условиях, установленных законодательством."},{"iconUrl":"img/favicon.ico","title":"Обучение и проживание","text":"Полное обеспечение в период подготовки и прохождения службы по контракту."},{"iconUrl":"img/favicon.ico","title":"Сопровождение","text":"Организационная поддержка на всех этапах: от подачи заявки до оформления контракта."}]</script>
+        <div class="advantages__grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" data-advantages></div>
       </div>
     </section>
 
@@ -121,6 +136,22 @@
           <a href="#application" class="contract__btn inline-flex items-center justify-center w-full lg:w-auto px-6 sm:px-20 py-4 sm:py-10 text-base sm:text-xl md:text-xl lg:text-2xl bg-[#E05445] hover:bg-[#c94a3d] text-white font-normal rounded-lg transition-colors flex-shrink-0">
             Отправить заявку
           </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="process-list" class="process-list py-10 sm:py-16 md:py-20 lg:py-24 bg-[#EAEAEA] mb-8 sm:mb-12 md:mb-16 lg:mb-[100px]">
+      <div class="process-list__inner container mx-auto px-4 md:px-8">
+        <h2 class="process-list__title text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold uppercase text-left mb-6 sm:mb-10">
+          <span class="text-[#2E65CA]">Как проходит</span> отбор кандидатов
+        </h2>
+        <div class="process-list__items w-full max-w-full min-w-0 max-w-[calc(100vw-2rem)] md:max-w-none mx-auto md:mx-0" data-process-scroll>
+          <div class="process-bar h-[16px] w-full min-w-[280px] md:min-w-0 bg-[#D9D9D9] rounded-full overflow-hidden flex-shrink-0">
+            <div class="process-bar__fill h-full bg-[#CA3B2E] rounded-full transition-[width] duration-150 ease-out" style="width: 0%;" data-process-bar-fill></div>
+          </div>
+          <div class="process-list__list-wrap overflow-x-auto overflow-y-hidden min-w-0 mt-6 sm:mt-10 md:overflow-visible" data-process-list-scroll style="-webkit-overflow-scrolling: touch;">
+            <ul class="process-list__list flex gap-4 font-bold text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed flex-nowrap md:flex-wrap text-gray-900 md:min-w-0" data-info-text="Подача заявки и&nbsp;первичная консультация, Проверка соответствия требованиям, Оформление документов в&nbsp;установленном порядке, Подготовка в&nbsp;рамках службы, Прохождение службы по&nbsp;контракту"></ul>
+          </div>
         </div>
       </div>
     </section>
